@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import firebaseApp from './firebase';
 
 class AuthService {
   // provider 의 이름(google? facebook? twiter?)을 받아와
@@ -6,7 +7,7 @@ class AuthService {
   login(providerName){
     const authProvider = new firebase.auth[`${providerName}AuthProvider`]();
     // popup 이용
-    return firebase.auth().signInWithPopup(authProvider);
+    return firebaseApp.auth().signInWithPopup(authProvider);
   }
 }
 
