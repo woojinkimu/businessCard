@@ -24,7 +24,7 @@ const CardAddForm = ({onAdd}) => {
       message: messageRef.current.value || '',
       fileName: '',
       fileURL: '',
-    }
+    };
     formRef.current.reset();
     onAdd(card);
   };
