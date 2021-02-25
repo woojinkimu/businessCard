@@ -4,7 +4,7 @@ import Maker from './components/maker/maker';
 import styles from './app.module.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-function App({authService}) {
+function App({FileInput, authService}) {
   return (
     <div className={styles.app}>
       <BrowserRouter>
@@ -13,7 +13,7 @@ function App({authService}) {
             <Login authService={authService} />
           </Route>
           <Route path="/maker">
-            <Maker authService={authService} />
+            <Maker authService={authService} FileInput={FileInput} />
           </Route>
         </Switch>
       </BrowserRouter>
