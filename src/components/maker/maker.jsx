@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Editor from '../editor/editor';
 import Footer from '../footer/footer';
@@ -7,6 +7,38 @@ import Preview from '../preview/preview';
 import styles from './maker.module.css';
 
 const Maker = ({authService}) => {
+  const [cards, setCards] = useState([
+    {
+      id: '1',
+      name: 'wooreal1',
+      company: 'none',
+      theme: 'dark',
+      email: 'hutjunei@gmail.com',
+      message: 'hi',
+      fileName: 'filename',
+      fileURL: null,
+    },
+    {
+      id: '2',
+      name: 'wooreal2',
+      company: 'none',
+      theme: 'light',
+      email: 'hutjunei@gmail.com',
+      message: 'hi',
+      fileName: 'filename',
+      fileURL: null,
+    },
+    {
+      id: '3',
+      name: 'wooreal3',
+      company: 'none',
+      theme: 'colorful',
+      email: 'hutjunei@gmail.com',
+      message: 'hi',
+      fileName: 'filename',
+      fileURL: null,
+    },
+  ]);
   const history = useHistory();
   const onLogout = () => {
     authService.logout();
@@ -24,8 +56,8 @@ const Maker = ({authService}) => {
     <section className={styles.maker}>
       <Header onLogout={onLogout} />
       <div className={styles.container}>
-        <Editor />
-        <Preview />
+        <Editor cards={cards} />
+        <Preview cards={cards} />
       </div>
       <Footer />
     </section>
