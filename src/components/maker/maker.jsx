@@ -60,7 +60,7 @@ const Maker = ({FileInput, authService, cardRepository}) => {
         history.push('/');
       }
     })
-  });
+  }, [authService, history]);
   // useEffect(()=> {
   //   authService.onAuthChange(user => {
   //     if(!user){
@@ -70,7 +70,7 @@ const Maker = ({FileInput, authService, cardRepository}) => {
   // });
 
   // firebase sync 관련 useEffect
-  // mount or update or userId 가 변경되었을 때
+  // mount or update or userId 가 변경되었을 때 or cardRepository 가 다른것으로 변경되면
   useEffect(() => {
     // component 가 mount or update 시
     // userId 가 전달 되지 않있다면
@@ -85,7 +85,7 @@ const Maker = ({FileInput, authService, cardRepository}) => {
     });
     // CardRepository.syncCards 안의 return 을 const 로 받아와 실행
     return () => stopSync();
-  }, [userId]);
+  }, [userId, cardRepository]);
 
   const createOrUpdateCard = (card) => {
     // const updated = {...cards};
