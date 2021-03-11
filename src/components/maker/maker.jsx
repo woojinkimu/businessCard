@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Editor from '../editor/editor';
 import Footer from '../footer/footer';
@@ -47,9 +47,14 @@ const Maker = ({FileInput, authService, cardRepository}) => {
   //   },
   // });
 
-  const onLogout = () => {
+  // 함수형 컴포넌트가 계속 호출 되어도
+  // (props 나 state 가 변경되어도)
+  // 메모리에 저장되어있는 동일한 데이터를 사용하고 싶을때 작성
+  // ,[authService] 를 작성하면
+  // props 로 받은 authService 가 변경되면 해당 useCallback() 이 호출됨
+  const onLogout = useCallback(() => {
     authService.logout();
-  };
+  }, [authService]);
 
   // login 관련 useEffect
   useEffect(()=> {
